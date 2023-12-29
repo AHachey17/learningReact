@@ -1,12 +1,9 @@
-//need type of parameter for typescript
-import { MouseEvent } from "react";
+import { useState } from "react";
 
 function ListGroup() {
   let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
-  let selectedIndex = 0;
 
-  //Event handler, smirf, in typescript you need to specify type of parameter, hoover over other
-  const handleClick = (event: MouseEvent) => console.log(event);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   // no for loop, convert each item to an item of a different type
   //below is them items in the array converted to the list items
@@ -25,7 +22,10 @@ function ListGroup() {
                 : "list-group-item"
             }
             key={item}
-            onClick={handleClick}
+            //set to a function the reassigns the selectedIndex to index? need useState, hook
+            onClick={() => {
+              setSelectedIndex(index);
+            }}
           >
             {item}
           </li>
